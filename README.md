@@ -1,7 +1,8 @@
 # minishell
 A simple shell written in C, inspired by Bash. It supports basic commands, input/output redirection, pipes, environment variables, and signal handling. This project helps to understand process management and file descriptors in Unix systems. 
 
-## Tests
+<details>
+  <summary>TESTS</summary>
 ### Compilation
 ```sh
 Check -Wall -Wextra -Werror
@@ -238,7 +239,7 @@ append to a file
 - **TESTS CREDITS:** [Walter](https://github.com/waltergcc/42-minishell)
 
 - **MinishellTests.xlsx CREDITS:** [	Daniel Junho](https://github.com/djunho)
-
+</details>
 
 ## 💬 &nbsp;Contacts
 
