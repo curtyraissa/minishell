@@ -3,6 +3,7 @@ A simple shell written in C, inspired by Bash. It supports basic commands, input
 
 <details>
   <summary>TESTS</summary>
+  
 ### Compilation
 ```sh
 Check -Wall -Wextra -Werror
