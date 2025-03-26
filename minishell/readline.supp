@@ -1,0 +1,16 @@
+{
+   name: "Ignore readline allocs"
+   Memcheck:Leak
+   fun:*alloc
+   obj:*/libreadline.so.*
+}
+{
+    name: "Ignore readline"
+    Memcheck:Leak
+    fun:readline
+}
+{
+    name: "Ignore add_history"
+    Memcheck:Leak
+    fun:add_history
+}
