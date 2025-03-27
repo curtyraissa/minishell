@@ -27,7 +27,7 @@
 # define HEREDOC 1   // Flag for heredoc processing
 # define TOKEN 0     // Flag for token processing
 
-extern int g_ctrlc;  // Global variable for signal control (e.g., Ctrl-C)
+extern int g_signal;  // Global variable for signal control (e.g., Ctrl-C)
 
 /* Redirections */
 typedef struct s_redir
@@ -108,5 +108,16 @@ typedef struct shell
 } t_shell;
 
 /* Function prototypes  */
+void		fill_chunk_no_quotes(t_chunk **chunk, char **cpy, int size);
+t_chunk		*init_chunk(void);
+t_chunk		*build_chunk(char **tok);
+char		*expand_chunk_value(t_chunk *chunk, t_shell *shell);
+char		*token_cleanup(char *tok, t_shell *shell, int type);
+int			final_token_size(t_chunk *chunks);
+t_chunk		*chunk_last(t_chunk *chunk);
+void		append_chunk(t_chunk **chunks, t_chunk *chunk, t_chunk **head);
+void		clear_chunks(t_chunk *chunks);
+char		*join_chunks(t_chunk *chunks, t_shell *shell);
+
 
 #endif

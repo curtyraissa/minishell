@@ -10,7 +10,7 @@ LIBFT_DIR	= libft/
 LIBFT		= libft/libft.a
 
 # Source files list, TO DO
-SRC_FILES	= 
+SRC_FILES	= main.c clean_token.c clean_token_utils.c
 SRC			= $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
