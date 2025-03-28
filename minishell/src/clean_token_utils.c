@@ -1,10 +1,11 @@
 #include "minishell.h"
 
-// Calcula o tamanho total necessário para juntar todos os chunks
+// Calculates the total length of all chunk strings combined
 int	final_token_size(t_chunk *chunks)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (chunks && chunks->str)
 	{
 		i += ft_strlen(chunks->str);
@@ -13,7 +14,7 @@ int	final_token_size(t_chunk *chunks)
 	return (i);
 }
 
-// Retorna o último chunk da lista encadeada
+// Returns the last chunk in a linked list of chunks
 t_chunk	*chunk_last(t_chunk *chunk)
 {
 	if (!chunk || !chunk->str)
@@ -28,8 +29,8 @@ t_chunk	*chunk_last(t_chunk *chunk)
 	return (chunk);
 }
 
-// Adiciona um chunk no final da lista de chunks
-void	append_chunk(t_chunk **chunks, t_chunk *chunk, t_chunk **head)
+// Appends a chunk to the end of the chunk list; updates the head if list was empty
+void	chunk_add_back(t_chunk **chunks, t_chunk *chunk, t_chunk **head)
 {
 	t_chunk	*last;
 
@@ -43,8 +44,8 @@ void	append_chunk(t_chunk **chunks, t_chunk *chunk, t_chunk **head)
 		last->next = chunk;
 }
 
-// Libera toda a memória alocada para a lista de chunks
-void	clear_chunks(t_chunk *chunks)
+// Frees all memory allocated for a linked list of chunks
+void	free_chunks(t_chunk *chunks)
 {
 	t_chunk	*tmp;
 
@@ -57,8 +58,8 @@ void	clear_chunks(t_chunk *chunks)
 	}
 }
 
-// Junta todos os chunks em uma única string final
-char	*join_chunks(t_chunk *chunks, t_shell *shell)
+// Joins all chunk strings into one final string, handling edge cases (e.g., expansion)
+char	*chunks_join(t_chunk *chunks, t_shell *shell)
 {
 	char	*str;
 

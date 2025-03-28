@@ -1,7 +1,7 @@
 #include "minishell.h"
 
-// Preenche um chunk sem aspas com o texto copiado
-void	fill_chunk_no_quotes(t_chunk **chunk, char **cpy, int size)
+// Extracts a string segment without quotes and sets its type ('$' or 'a')
+void	chunk_no_quotes(t_chunk **chunk, char **cpy, int size)
 {
 	(*chunk)->str = ft_strndup(*cpy, size);
 	if (**cpy == '$')
@@ -12,7 +12,7 @@ void	fill_chunk_no_quotes(t_chunk **chunk, char **cpy, int size)
 		free(*chunk);
 }
 
-// Inicializa e retorna um novo chunk
+// Allocates and initializes a new empty chunk
 t_chunk	*init_chunk(void)
 {
 	t_chunk	*chunk;
@@ -25,8 +25,8 @@ t_chunk	*init_chunk(void)
 	return (chunk);
 }
 
-// Cria um chunk a partir de um token, considerando aspas
-t_chunk	*build_chunk(char **tok)
+// Creates a chunk based on the token input; handles quoted and non-quoted text
+t_chunk	*create_chunk(char **tok)
 {
 	t_chunk	*chunk;
 	int		i;
@@ -41,7 +41,7 @@ t_chunk	*build_chunk(char **tok)
 		(*tok)++;
 	}
 	if (i > 0)
-		fill_chunk_no_quotes(&chunk, &cpy, i);
+		chunk_no_quotes(&chunk, &cpy, i);
 	else
 	{
 		chunk->type = **tok;
@@ -53,41 +53,45 @@ t_chunk	*build_chunk(char **tok)
 	return (chunk);
 }
 
-// Expande variáveis em um chunk usando o ambiente do shell
-char	*expand_chunk_value(t_chunk *chunk, t_shell *shell)
+// Expands a chunk’s content if needed (e.g. variable expansion)
+char	*expand_chunk(t_chunk *chunk, t_shell *shell)
 {
 	char	*tmp;
 
 	tmp = ft_strdup(chunk->str);
 	free (chunk->str);
+	chunk->str = NULL;
 	chunk->str = deal_expansion(tmp, shell);
 	free (tmp);
+	tmp = NULL;
 	return (chunk->str);
 }
 
-// Processa e limpa um token, aplicando expansões e juntando os chunks
-char	*token_cleanup(char *tok, t_shell *shell, int type)
+// Breaks a token into chunks, expands if necessary, and returns final cleaned token
+char	*clean_token(char *tok, t_shell *shell, int type)
 {
-	t_chunk	*chunks = NULL;
+	t_chunk	*chunks;
 	t_chunk	*chunk;
 	t_chunk	*head;
-	char	*tok_cpy = tok;
+	char	*tok_cpy;
 	char	*final_token;
 
+	tok_cpy = tok;
+	chunks = NULL;
 	while (*tok_cpy)
 	{
-		chunk = build_chunk(&tok_cpy);
+		chunk = create_chunk(&tok_cpy);
 		if (!chunk)
 		{
-			clear_chunks(head);
+			free_chunks(head);
 			return (NULL);
 		}
 		if ((chunk->type == '"' || chunk->type == 'a' || chunk->type == '$')
 			&& type == TOKEN)
-			chunk->str = expand_chunk_value(chunk, shell);
-		append_chunk(&chunks, chunk, &head);
+			chunk->str = expand_chunk(chunk, shell);
+		chunk_add_back(&chunks, chunk, &head);
 	}
-	final_token = join_chunks(chunks, shell);
-	clear_chunks(head);
+	final_token = chunks_join(chunks, shell);
+	free_chunks(head);
 	return (final_token);
 }

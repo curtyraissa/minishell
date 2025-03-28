@@ -27,7 +27,7 @@
 # define HEREDOC 1   // Flag for heredoc processing
 # define TOKEN 0     // Flag for token processing
 
-extern int g_signal;  // Global variable for signal control (e.g., Ctrl-C)
+extern int g_ctrlc;  // Global variable for signal control (e.g., Ctrl-C)
 
 /* Redirections */
 typedef struct s_redir
@@ -108,16 +108,91 @@ typedef struct shell
 } t_shell;
 
 /* Function prototypes  */
-void		fill_chunk_no_quotes(t_chunk **chunk, char **cpy, int size);
-t_chunk		*init_chunk(void);
-t_chunk		*build_chunk(char **tok);
-char		*expand_chunk_value(t_chunk *chunk, t_shell *shell);
-char		*token_cleanup(char *tok, t_shell *shell, int type);
+void		init_minishell(t_shell *shell);
+t_token		*create_token(void);
+t_shell		*init_struct(char **argv, char **envp);
+t_fds		*init_fds(void);
+t_cmd		*create_cmd(t_shell *shell, int type, t_cmd *left, t_cmd *right);
+void		signals(void);
+void		signal_handler(int sig);
+void		heredoc_sig_handler(int sig);
+void		child_signal_handler(int sig);
+char		**copy_env(char **env);
+int			env_size(char **env);
+void		free_env(char **env);
+int			var_name_len(char *var);
+int			var_search(char **env, char *var);
+t_cmd		*parse_cmd(char *str, t_shell *shell);
+int			get_token(char **ptr_str, char **start_token, char **end_token);
+int			special_chars(char **str);
+int			find_char(char **ptr_str, char *set);
+int			syntax_check(t_shell *shell);
+void		token_count(char *str, t_shell *argc);
+t_redir		*add_redir(t_redir *head, int type, t_token *tok, t_shell *shell);
+int			deal_token(t_cmd *cmd, char **str,
+				t_token *token, t_shell *shell);
+char		*clean_token(char *tok, t_shell *shell, int type);
 int			final_token_size(t_chunk *chunks);
 t_chunk		*chunk_last(t_chunk *chunk);
-void		append_chunk(t_chunk **chunks, t_chunk *chunk, t_chunk **head);
-void		clear_chunks(t_chunk *chunks);
-char		*join_chunks(t_chunk *chunks, t_shell *shell);
-
+void		chunk_add_back(t_chunk **chunks, t_chunk *chunk, t_chunk **head);
+char		*chunks_join(t_chunk *chunks, t_shell *shell);
+void		free_chunks(t_chunk *chunks);
+char		**clean_argv(t_cmd *cmd);
+char		*deal_expansion(char *token, t_shell *shell);
+char		*expansion_join(char *token, char *old_final, int *i);
+char		*expand_cases(char **token, t_shell *shell);
+char		*create_expand(char *expand);
+void		run_cmd(t_cmd *cmd, t_shell *shell);
+void		execute_commands(t_cmd *execcmd, t_shell *shell);
+void		handle_child_process(char *path, t_cmd *execcmd,
+				t_shell *shell);
+void		handle_parent_process(int pid, char *path,
+				t_cmd *execcmd, t_shell *shell);
+int			fork_function1(t_cmd *pipecmd, t_shell *shell);
+int			fork_function2(t_cmd *pipecmd, t_shell *shell);
+void		wait_pipes_close(t_cmd *cmd, t_shell *shell, int pid1, int pid2);
+char		*get_cmd_path(char **env, char *cmd);
+char		*get_cmds_path(char *path, char *cmd);
+int			is_directory(char *path);
+void		path_errors(t_shell *shell, t_cmd *cmd);
+int			has_slash(char *arg);
+void		handle_redirs(t_cmd *execcmd, t_shell *shell);
+int			handle_heredoc(t_cmd *cmd, t_shell *shell);
+int			heredoc_loop(t_heredoc *curr, t_shell *shell);
+int			process_heredoc(t_heredoc *curr, t_shell *shell);
+t_heredoc	*get_delimiter(char *start_tok, char *end_tok,
+				t_shell *shell, t_cmd *cmd);
+int			special_redirs(char **str);
+int			ambigous_redir(t_shell *shell, t_redir *redir);
+int			file_permissions(t_shell *shell, t_redir *redir);
+int			valid_redir(t_shell *shell, t_redir *redir, t_cmd *cmd);
+int			redirs_in(t_fds *fds, t_redir *redir, t_shell *shell, t_cmd *cmd);
+int			redirs_out(t_fds *fds, t_redir *redir, t_shell *shell);
+void		close_fds(t_fds *fds);
+void		free_cmd(t_cmd *cmd);
+void		delete_heredocs(t_shell *shell, int flag, t_cmd *cmd);
+void		free_split(char **split);
+void		free_shell(t_shell *shell, int i);
+char		*is_builtin(t_cmd *execcmd);
+void		exec_builtin(char **argv, char *builtin, t_shell *shell);
+int			ft_echo(char **argv);
+int			ft_pwd(char **argv);
+int			ft_cd(char **argv, t_shell *shell);
+int			var_is_set(char **local_env, char *var);
+char		*ft_getcwd(t_shell *shell);
+int			update_var(t_shell *shell, char *var_name, char *var_value);
+int			ft_export(char **argv, t_shell *shell);
+char		**update_env(char **local_env, char *var);
+int			ft_export_no_args(t_shell *shell);
+void		append_var(t_shell *shell, char *var);
+int			ft_unset(char **argv, t_shell *shell);
+int			ft_env(char **argv, t_shell *shell);
+void		ft_exit(char **argv, t_shell *shell);
+int			exit_error(char *arg, int error);
+int			valid_code(char *arg);
+int			has_options(char **argv, char *command);
+int			mini_error(char *str, int error, t_shell *shell);
+int			is_whitespace(char c);
+void		on_off_flag(int *flag);
 
 #endif
