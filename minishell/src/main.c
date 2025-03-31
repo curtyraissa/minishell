@@ -6,13 +6,13 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:03 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:04 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:45:48 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_ctrlc = 0;
+int	g_signal = 0;
 
 // Entry point of the minishell program.
 // Initializes shell structure, sets up signals and starts the main loop.

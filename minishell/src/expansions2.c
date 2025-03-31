@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:39 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:40 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:45:31 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	return_exit_code(char **token, t_shell *shell)
 	final_token = create_expand(*token);
 	if (ft_strncmp(final_token, "?", 1) == 0)
 	{
-		if (g_ctrlc == SIGINT)
+		if (g_signal == SIGINT)
 			shell->exit_status = 130;
 	}
 	return (free(final_token));

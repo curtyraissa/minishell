@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:44:42 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:44:43 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:43:53 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define HEREDOC 1   // Flag for heredoc processing
 # define TOKEN 0     // Flag for token processing
 
-extern int g_ctrlc;  // Global variable for signal control (e.g., Ctrl-C)
+extern int g_signal;  // Global variable for signal control (e.g., Ctrl-C)
 
 /* Redirections */
 typedef struct s_redir

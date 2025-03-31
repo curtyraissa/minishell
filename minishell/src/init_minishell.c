@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:00 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:01 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:45:44 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_shell(t_shell *shell, int i)
 {
 	free (shell->prompt);
 	free (shell->input);
-	g_ctrlc = 0;
+	g_signal = 0;
 	shell->ambiguous = 0;
 	if (i)
 	{

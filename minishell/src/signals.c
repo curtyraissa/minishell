@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:31 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:32 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:46:06 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	signal_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		g_ctrlc = SIGINT;
+		g_signal = SIGINT;
 		printf("\n");
 		rl_replace_line("", 0);
 		if (rl_line_buffer[0] == '\0')
@@ -40,7 +40,7 @@ void	heredoc_sig_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		g_ctrlc = SIGINT;
+		g_signal = SIGINT;
 		printf("\n");
 		rl_replace_line("", 0);
 		rl_on_new_line();
@@ -52,5 +52,5 @@ void	heredoc_sig_handler(int sig)
 void	child_signal_handler(int sig)
 {
 	if (sig == SIGINT)
-		g_ctrlc = SIGINT;
+		g_signal = SIGINT;
 }
