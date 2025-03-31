@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 11:47:21 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:22 by rcurty-g         ###   ########.fr       */
+/*   Created: 2025/03/31 11:45:00 by rcurty-g          #+#    #+#             */
+/*   Updated: 2025/03/31 11:45:01 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-// Implements the 'pwd' builtin command.
-// Prints the current working directory to stdout.
-// Returns 2 if any options are passed, otherwise 0.
-int	ft_pwd(char **argv)
+char	*ft_strndup(char *str, size_t n)
 {
-	char	path[4096];
+	size_t	i;
+	size_t	len;
+	char	*str2;
 
-	if (has_options(argv, argv[0]))
-		return (2);
-	if (getcwd(path, sizeof(path)))
-		ft_putendl_fd(path, 1);
-	return (0);
+	len = 0;
+	if (!str)
+		return (NULL);
+	while (len < n && str[len])
+		len ++;
+	str2 = ft_calloc(len + 1, sizeof(char));
+	if (!str2)
+		return (NULL);
+	i = 0;
+	while (str[i] && i < len)
+	{
+		str2[i] = str[i];
+		i++;
+	}
+	return (str2);
 }

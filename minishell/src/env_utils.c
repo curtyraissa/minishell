@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/31 11:46:13 by rcurty-g          #+#    #+#             */
+/*   Updated: 2025/03/31 11:46:14 by rcurty-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 // Returns the number of entries in the environment array
@@ -71,7 +83,7 @@ int	var_name_len(char *var)
 int	var_search(char **env, char *var)
 {
 	int	i;
-	int	size;
+	size_t	size;
 
 	i = 0;
 	if (!env || !var)
