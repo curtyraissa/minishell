@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:45 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:46 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:51:16 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Prints the value of a variable (after '='), quoting it and escaping '$' if present
+//Prints value of the variable(after '='),quoting it and escaping '$' if present
 static void	print_var_value(char **env_copy, int i, int j)
 {
 	if (env_copy[i][j] != '\0')

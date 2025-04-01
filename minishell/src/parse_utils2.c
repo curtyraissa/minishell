@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:16 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:17 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:47:16 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Creates a new argv array, skipping empty expansions and duplicating valid strings
+//Creates a new av array,skipping empty expansions and duplicating valid strings
 char	**copy_argv(char **argv, int size, int i, int j)
 {
 	char	**new_argv;
@@ -42,7 +42,7 @@ char	**copy_argv(char **argv, int size, int i, int j)
 	return (new_argv);
 }
 
-// Cleans the argv array from null expansions and replaces it with a cleaned copy
+//Cleans the argv array from null expansions and replaces it with a cleaned copy
 char	**clean_argv(t_cmd *cmd)
 {
 	int		i;
@@ -106,7 +106,7 @@ void	token_count(char *str, t_shell *shell)
 	}
 }
 
-// Checks if the current character pointed by ptr_str matches any in the given set
+//Checks the current character pointed by ptr_str matches any in the given set
 int	find_char(char **ptr_str, char *set)
 {
 	char	*s;

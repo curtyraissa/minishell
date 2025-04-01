@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirs_exec2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:28 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:29 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:43:53 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ambigous_redir(t_shell *shell, t_redir *redir)
 	return (0);
 }
 
-// Verifies if the shell has permission to access the file specified in redirection
+// Verifies if shell has permission to access specified file in redirection
 int	file_permissions(t_shell *shell, t_redir *redir)
 {
 	if (redir->type == '>' || redir->type == '+')

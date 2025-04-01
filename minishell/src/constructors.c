@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   constructors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:06 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:07 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:59:20 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Creates and initializes a new command structure with optional left/right children
+//Creates and init. a new command structure with optional left/right children
 t_cmd	*create_cmd(t_shell *shell, int type, t_cmd *left, t_cmd *right)
 {
 	t_cmd	*cmd;

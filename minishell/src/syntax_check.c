@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:34 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:35 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 10:02:45 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	check_chars_and_quotes(t_shell *shell)
 	return (0);
 }
 
-// Validates correct usage of pipes, including invalid cases like starting or doubling
+//Validates correct pipes usage,including invalid cases(starting or doubling)
 int	check_pipes(t_shell *shell)
 {
 	char	*input;

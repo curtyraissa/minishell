@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirs_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:25 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:26 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:45:31 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	redirs_in(t_fds *fds, t_redir *redir, t_shell *shell, t_cmd *cmd)
 	return (1);
 }
 
-// Handles output redirection for commands, including truncating or appending modes
+// Handles output redirection for commands, like truncating or appending modes
 int	redirs_out(t_fds *fds, t_redir *redir, t_shell *shell)
 {
 	if (fds->out != -1)
@@ -81,7 +81,7 @@ int	redirs_out(t_fds *fds, t_redir *redir, t_shell *shell)
 	return (1);
 }
 
-// Main handler for command redirections: validates and applies them before execution
+// Main handler for command redirections:validates and applies before execution
 void	handle_redirs(t_cmd *execcmd, t_shell *shell)
 {
 	t_redir	*redir;

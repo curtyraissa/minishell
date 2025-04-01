@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:42 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:43 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:53:40 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Validates the name of the environment variable and determines if it's a new or append operation
+/*Validates the name of the environment variable and 
+determines if it's a new or append operation*/
 static int	valid_name_len(t_shell *shell, char *arg)
 {
 	int	i;
@@ -100,7 +101,8 @@ static void	export_error(char *arg)
 	ft_putstr_fd(": not a valid identifier\n", 2);
 }
 
-// Builtin function for 'export': handles variable exportation with validation and appending
+/*Builtin function for 'export': handles variable exportation 
+with validation and appending*/
 int	ft_export(char **argv, t_shell *shell)
 {
 	int	i;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:00 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 14:45:44 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:48:34 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Frees memory and resets values from the shell structure, optionally fully cleaning
+//Frees memory,resets values from the shell structure, optionally fully cleaning
 void	free_shell(t_shell *shell, int i)
 {
 	free (shell->prompt);

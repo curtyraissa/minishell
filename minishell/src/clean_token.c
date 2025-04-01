@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:03 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:04 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:59:55 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*expand_chunk(t_chunk *chunk, t_shell *shell)
 	return (chunk->str);
 }
 
-// Breaks a token into chunks, expands if necessary, and returns final cleaned token
+//Breaks token into chunks, expands if necessary,returns final cleaned token
 char	*clean_token(char *tok, t_shell *shell, int type)
 {
 	t_chunk	*chunks;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:22 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:23 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:57:22 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	has_slash(char *arg)
 	return (0);
 }
 
-// Determines the command type: builtin, path with slash, or needs lookup in PATH
+//Determines the command type: builtin, path with slash, or needs lookup in PATH
 static void	command_type(t_cmd *cmd, t_shell *shell, char **path)
 {
 	if (is_builtin(cmd) != NULL)

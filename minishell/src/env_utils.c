@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:13 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:14 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:58:45 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	var_name_len(char *var)
 // Searches for a variable name in the environment and returns its index, or -1
 int	var_search(char **env, char *var)
 {
-	int	i;
+	int		i;
 	size_t	size;
 
 	i = 0;

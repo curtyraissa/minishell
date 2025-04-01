@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_token_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:00 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:01 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 10:01:20 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ t_chunk	*chunk_last(t_chunk *chunk)
 	return (chunk);
 }
 
-// Appends a chunk to the end of the chunk list; updates the head if list was empty
+/*Appends a chunk to the end of the chunk list; 
+updates the head if list was empty*/
 void	chunk_add_back(t_chunk **chunks, t_chunk *chunk, t_chunk **head)
 {
 	t_chunk	*last;
@@ -70,7 +71,8 @@ void	free_chunks(t_chunk *chunks)
 	}
 }
 
-// Joins all chunk strings into one final string, handling edge cases (e.g., expansion)
+/*Joins all chunk strings into one final string, 
+handling edge cases (e.g., expansion)*/
 char	*chunks_join(t_chunk *chunks, t_shell *shell)
 {
 	char	*str;

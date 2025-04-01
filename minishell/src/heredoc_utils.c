@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:54 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:55 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:49:19 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Iterates through heredocs and creates a pipe for each one; processes their input
+//Iterates through heredocs and creates a pipe for each 1; processes their input
 int	heredoc_loop(t_heredoc *curr, t_shell *shell)
 {
 	while (curr)

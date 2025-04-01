@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:25 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:26 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:56:58 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	free_split(char **split)
 	}
 }
 
-// Handles execution inside the child process: executes the command or exits on failure
+/*Handles execution inside the child process: 
+executes the command or exits on failure*/
 void	handle_child_process(char *path, t_cmd *execcmd, t_shell *shell)
 {
 	int		flag;
@@ -54,7 +55,7 @@ void	handle_child_process(char *path, t_cmd *execcmd, t_shell *shell)
 	exit(126);
 }
 
-// Handles the parent process after forking: waits and sets the appropriate exit status
+//Handles parent process after forking:waits and sets appropriate exit status
 void	handle_parent_process(int pid, char *path,
 							t_cmd *execcmd, t_shell *shell)
 {
