@@ -6,7 +6,7 @@
 /*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:44:42 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 11:29:53 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:11:05 by rcorlett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,79 +44,79 @@ extern int	g_signal;// Global variable for signal control (e.g., Ctrl-C)
 /* Redirections */
 typedef struct s_redir
 {
-	char	*file; // File path for redirection
-	char	*end_file; // End file in case of range redirection
-	struct s_redir	*next; // Pointer to next redirection
-	int		type; // Type of redirection (input, output)
+	char				*file; // File path for redirection
+	char				*end_file; // End file in case of range redirection
+	struct s_redir		*next; // Pointer to next redirection
+	int					type; // Type of redirection (input, output)
 }	t_redir;
 
 typedef struct heredoc
 {
-	int		fd; // File descriptor for heredoc
-	int		index; // Index for managing multiple heredocs
-	int		pipe_fd[2]; // Pipe file descriptors for heredoc input
-	char	*delimiter; // Delimiter string to end heredoc
-	struct heredoc	*next; // Pointer to next heredoc structure
+	int					fd; // File descriptor for heredoc
+	int					index; // Index for managing multiple heredocs
+	int					pipe_fd[2]; // Pipe file descriptors for heredoc input
+	char				*delimiter; // Delimiter string to end heredoc
+	struct heredoc		*next; // Pointer to next heredoc structure
 }	t_heredoc;
 
 /* command execution */
 typedef struct cmd
 {
-	int		type; // Type of command (exec, pipe, redir)
-	char	**argv; // Arguments vector
-	t_redir	*redir; // Linked list of redirections
-	int		argc; // Argument count
-	int		fd_out; // File descriptor for output
-	int		fd_in; // File descriptor for input
-	t_heredoc	*heredoc; // Pointer to heredoc structure
-	t_heredoc	*heredoc_head; // Pointer to the head of heredoc list
-	int		pipefd[2]; // Pipe file descriptors
-	int		prev_pipe; // Indicator of a previous pipe
-	struct cmd	*left; // Pointer to left command in tree (pipes)
-	struct cmd	*right; // Pointer to right command in tree (pipes)
-	pid_t	pid1; // Process ID for the first fork
-	pid_t	pid2; // Process ID for a possible second fork
+	int					type; // Type of command (exec, pipe, redir)
+	char				**argv; // Arguments vector
+	t_redir				*redir; // Linked list of redirections
+	int					argc; // Argument count
+	int					fd_out; // File descriptor for output
+	int					fd_in; // File descriptor for input
+	t_heredoc			*heredoc; // Pointer to heredoc structure
+	t_heredoc			*heredoc_head; // Pointer to the head of heredoc list
+	int					pipefd[2]; // Pipe file descriptors
+	int					prev_pipe; // Indicator of a previous pipe
+	struct cmd			*left; // Pointer to left command in tree (pipes)
+	struct cmd			*right; // Pointer to right command in tree (pipes)
+	pid_t				pid1; // Process ID for the first fork
+	pid_t				pid2; // Process ID for a possible second fork
 }	t_cmd;
 
 typedef struct s_chunk
 {
-	char	*str; // String chunk
-	char	type; // Type of chunk (command, argument)
-	struct s_chunk	*next; // Pointer to next chunk
+	char				*str; // String chunk
+	char				type; // Type of chunk (command, argument)
+	struct s_chunk		*next; // Pointer to next chunk
 }	t_chunk;
 
 typedef struct token
 {
-	char	*start; // Start of the token
-	char	*end; // End of the token
-	int		argc; // Argument count
+	char				*start; // Start of the token
+	char				*end; // End of the token
+	int					argc; // Argument count
 }	t_token;
 
 typedef struct file_descriptors
 {
-	int		in_fd; // Input file descriptor
-	int		out; // Output file descriptor
-	int		saved_in; // Saved standard input
-	int		saved_out; // Saved standard output
+	int					in_fd; // Input file descriptor
+	int					out; // Output file descriptor
+	int					saved_in; // Saved standard input
+	int					saved_out; // Saved standard output
 }	t_fds;
 
 typedef struct shell
 {
-	t_cmd			*head; // Head of command list
-	char	*name; // Name of the shell
-	char	**env; // Environment variables
-	char	*input; // User input
-	char	*prompt; // Prompt string
-	int		ambiguous; // Flag for ambiguous redirections
-	int		argc; // Argument count
-	int		heredoc_name; // Index for naming heredocs
-	int		status1; // Status of first process
-	int		status2; // Status of second process
-	int		home_index; // Index of HOME in environment
-	int		exit_heredoc; // Flag for exiting heredoc
-	int		exit_status; // Exit status of the shell
-	int		heredoc_flag; // Flag for heredoc processing
-	t_fds			*fds; // File descriptors
+	t_cmd				*head; // Head of command list
+	char				*name; // Name of the shell
+	char				**env; // Environment variables
+	char				*input; // User input
+	char				*prompt; // Prompt string
+	int					ambiguous; // Flag for ambiguous redirections
+	int					argc; // Argument count
+	int					heredoc_name; // Index for naming heredocs
+	int					status1; // Status of first process
+	int					status2; // Status of second process
+	int					home_index; // Index of HOME in environment
+	int					exit_heredoc; // Flag for exiting heredoc
+	int					exit_status; // Exit status of the shell
+	int					heredoc_flag; // Flag for heredoc processing
+	t_fds				*fds; // File descriptors
 }	t_shell;
 
 /* Function prototypes  */
