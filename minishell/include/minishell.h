@@ -39,6 +39,10 @@
 # define HEREDOC 1   // Flag for heredoc processing
 # define TOKEN 0     // Flag for token processing
 
+# define RESET  "\033[0m"
+# define RED    "\033[1;31m"
+# define GREEN  "\033[1;32m"
+
 extern int	g_signal;// Global variable for signal control (e.g., Ctrl-C)
 
 /* Redirections */

@@ -47,31 +47,31 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 $(NAME): $(OBJ_DIR) $(OBJ)
 	@make -C $(LIBFT_DIR) -s
 	@$(CC) $(CFLAGS) $(INCLUDE) $(SRC) -o $(NAME) $(LIBFLAGS) $(LIBFT)
-	@echo "Executable $(NAME) created successfully."
-	@echo "$(NAME) compiled successfully."
+	@echo "\033[0;32mExecutable $(NAME) created successfully!\033[0m"
+	@echo "\033[0;32m$(NAME) compiled successfully!\033[0m"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@echo "Object directory created successfully."
+	@echo "\033[0;32mObject directory created successfully!\033[0m"
 
 clean:
 	@make clean -C $(LIBFT_DIR) -s
 	@$(RM) $(OBJ_DIR)
-	@echo "Clean completed successfully."
+	@echo "\033[0;31mClean completed successfully.\033[0m"
 
 fclean: clean
 	@make fclean -C $(LIBFT_DIR) -s
 	@$(RM) $(NAME)
-	@echo "Full clean completed successfully."
+	@echo "\033[0;31mFull clean completed successfully.\033[0m"
 
 re: fclean all
-	@echo "Rebuild completed successfully."
+	@echo "\033[0;31mRebuild completed successfully.\033[0m"
 
 valgrind: re
 	valgrind -s -q --suppressions=$(READLINE_SUPP) \
 	--tool=memcheck --leak-check=full \
 	--show-leak-kinds=all --track-origins=yes \
 	--show-below-main=no ./$(NAME)
-	@echo "Valgrind execution completed."
+	@echo "\033[0;31mValgrind execution completed.\033[0m"
 
 .PHONY: all clean fclean re le
