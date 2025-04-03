@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:09 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/03 09:59:33 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:09:48 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	is_echo_flag(char *arg)
 }
 
 // Builtin function for 'echo': prints arguments to stdout
-int	ft_echo(char **av)
+int	cmd_echo(char **av)
 {
 	int	i;
 

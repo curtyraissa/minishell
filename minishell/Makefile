@@ -6,7 +6,7 @@
 #    By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/31 11:44:46 by rcurty-g          #+#    #+#              #
-#    Updated: 2025/04/03 10:54:21 by rcurty-g         ###   ########.fr        #
+#    Updated: 2025/04/03 14:26:41 by rcurty-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ SRC_FILES = main.c \
 			executor.c executor2.c pipe_exec.c redirs_exec.c \
 			heredoc.c heredoc_utils.c executor_utils.c redirs_exec2.c \
 			signals.c \
-			cmd_builtins.c echo.c pwd.c export.c export2.c export3.c \
-			unset.c env.c exit.c exit2.c utils.c cmd_cd.c cmd_cd_utils.c \
+			cmd_builtins.c echo.c pwd.c cmd_export.c cmd_export_utils.c cmd_export_plus.c \
+			unset.c env.c cmd_exit.c cmd_exit_utils.c utils.c cmd_cd.c cmd_cd_utils.c \
 			free_functions.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))

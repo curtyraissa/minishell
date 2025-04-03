@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:37 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/03 10:04:16 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:11:41 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	**remove_var(char **local_env, char *var)
 
 // Implements the 'unset' builtin command.
 // Removes variables from the shell environment.
-int	ft_unset(char **av, t_shell *shell)
+int	cmd_unset(char **av, t_shell *shell)
 {
 	int	i;
 

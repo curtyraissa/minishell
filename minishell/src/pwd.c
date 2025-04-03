@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:21 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/03 10:04:05 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:10:19 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Implements the 'pwd' builtin command.
 // Prints the current working directory to stdout.
 // Returns 2 if any options are passed, otherwise 0.
-int	ft_pwd(char **av)
+int	cmd_pwd(char **av)
 {
 	char	path[4096];
 

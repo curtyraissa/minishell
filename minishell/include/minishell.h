@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:44:42 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/03 10:16:19 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:35:59 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,19 +191,19 @@ void		free_split(char **split);
 void		free_shell(t_shell *shell, int i);
 char		*is_builtin(t_cmd *execcmd);
 void		exec_builtin(char **av, char *builtin, t_shell *shell);
-int			ft_echo(char **av);
-int			ft_pwd(char **av);
+int			cmd_echo(char **av);
+int			cmd_pwd(char **av);
 int			cmd_cd(char **av, t_shell *shell);
 int			var_is_set(char **local_env, char *var);
 char		*ft_getcwd(t_shell *shell);
 int			update_var(t_shell *shell, char *var_name, char *var_value);
-int			ft_export(char **av, t_shell *shell);
+int			cmd_export(char **av, t_shell *shell);
 char		**update_env(char **local_env, char *var);
 int			ft_export_no_args(t_shell *shell);
 void		append_var(t_shell *shell, char *var);
-int			ft_unset(char **av, t_shell *shell);
-int			ft_env(char **av, t_shell *shell);
-void		ft_exit(char **av, t_shell *shell);
+int			cmd_unset(char **av, t_shell *shell);
+int			cmd_env(char **av, t_shell *shell);
+void		cmd_exit(char **av, t_shell *shell);
 int			exit_error(char *arg, int error);
 int			valid_code(char *arg);
 int			has_options(char **av, char *command);
