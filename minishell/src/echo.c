@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:09 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:10 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:59:33 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,30 @@ static int	is_echo_flag(char *arg)
 }
 
 // Builtin function for 'echo': prints arguments to stdout
-int	ft_echo(char **argv)
+int	ft_echo(char **av)
 {
 	int	i;
 
 	i = 1;
-	if (!argv[1])
+	if (!av[1])
 	{
 		ft_putchar_fd('\n', 1);
 		return (0);
 	}
-	while (is_echo_flag(argv[i]))
+	while (is_echo_flag(av[i]))
 		i++;
-	while (argv[i] && argv[i + 1] != NULL)
+	while (av[i] && av[i + 1] != NULL)
 	{
-		ft_putstr_fd(argv[i++], 1);
+		ft_putstr_fd(av[i++], 1);
 		ft_putchar_fd(' ', 1);
 	}
-	if (is_echo_flag(argv[1]))
+	if (is_echo_flag(av[1]))
 	{
-		if (argv[i])
-			ft_putstr_fd(argv[i], 1);
+		if (av[i])
+			ft_putstr_fd(av[i], 1);
 	}
 	else
-		if (argv[i])
-			ft_putendl_fd(argv[i], 1);
+		if (av[i])
+			ft_putendl_fd(av[i], 1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirs_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:25 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 09:45:31 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:04:08 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	handle_redirs(t_cmd *execcmd, t_shell *shell)
 			return ;
 		redir = redir->next;
 	}
-	if (execcmd->argv[0])
+	if (execcmd->av[0])
 		execute_commands(execcmd, shell);
 	close_fds(shell->fds);
 	free(shell->fds);

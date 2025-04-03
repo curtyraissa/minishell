@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:17 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:46:18 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:59:38 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 // Builtin function for 'env': prints all environment variables that contain '='
 // If any arguments are passed, it shows an error and returns 1
-int	ft_env(char **argv, t_shell *shell)
+int	ft_env(char **av, t_shell *shell)
 {
 	int		i;
 	char	*equal;
 	char	*arg;
 
-	if (argv[1])
+	if (av[1])
 	{
 		printf("minishell: env: No options or arguments are allowed\n");
 		return (1);

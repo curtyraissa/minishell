@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:51 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 09:49:50 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:03:32 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	free_cmd(t_cmd *cmd)
 	{
 		if (cmd->redir)
 			free_redirections(cmd->redir);
-		while (cmd->argv[i])
-			free (cmd->argv[i++]);
-		free (cmd->argv);
+		while (cmd->av[i])
+			free (cmd->av[i++]);
+		free (cmd->av);
 		free (cmd);
 	}
 	else if (cmd->type == PIPE)

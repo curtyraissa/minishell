@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:13 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:14 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:05:28 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	get_token(char **ptr_str, char **start_tok, char **end_tok)
 	return (ret);
 }
 
-// Processes the extracted token and stores it in the command's argv list
+// Processes the extracted token and stores it in the command's av list
 int	deal_token(t_cmd *cmd, char **str, t_token *token, t_shell *shell)
 {
 	int		tok_type;
@@ -113,14 +113,14 @@ int	deal_token(t_cmd *cmd, char **str, t_token *token, t_shell *shell)
 	len = token->end - token->start;
 	tmp = ft_strndup(token->start, len);
 	if (ft_strncmp(tmp, "\"\"", 2) == 0 && ft_strlen(tmp) == ft_strlen("\"\""))
-		cmd->argv[token->argc] = ft_strdup("");
+		cmd->av[token->ac] = ft_strdup("");
 	else if (ft_strncmp(tmp, "\'\'", 2) == 0
 		&& ft_strlen(tmp) == ft_strlen("\'\'"))
-		cmd->argv[token->argc] = ft_strdup("");
+		cmd->av[token->ac] = ft_strdup("");
 	else if (!ft_strchr(tmp, '"') && !ft_strchr(tmp, '\''))
-		cmd->argv[token->argc] = deal_expansion(tmp, shell);
+		cmd->av[token->ac] = deal_expansion(tmp, shell);
 	else
-		cmd->argv[token->argc] = clean_token(tmp, shell, TOKEN);
+		cmd->av[token->ac] = clean_token(tmp, shell, TOKEN);
 	free (tmp);
 	return (1);
 }

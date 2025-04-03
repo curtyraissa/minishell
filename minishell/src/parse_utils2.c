@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:16 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 09:47:16 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:05:31 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 //Creates a new av array,skipping empty expansions and duplicating valid strings
-char	**copy_argv(char **argv, int size, int i, int j)
+char	**copy_av(char **av, int size, int i, int j)
 {
-	char	**new_argv;
+	char	**new_av;
 
-	new_argv = ft_calloc(sizeof(char *), size + 1);
-	if (!new_argv)
+	new_av = ft_calloc(sizeof(char *), size + 1);
+	if (!new_av)
 		return (NULL);
-	while (argv[i])
+	while (av[i])
 	{
-		if (argv[i] && argv[i][0] == '\0')
+		if (av[i] && av[i][0] == '\0')
 		{
-			new_argv[j] = ft_strdup("");
+			new_av[j] = ft_strdup("");
 			j ++;
 		}
-		else if (ft_strncmp(argv[i], EXPAND_NULL, ft_strlen(argv[i])) != 0)
+		else if (ft_strncmp(av[i], EXPAND_NULL, ft_strlen(av[i])) != 0)
 		{
-			new_argv[j] = ft_strdup(argv[i]);
-			if (!new_argv[j])
+			new_av[j] = ft_strdup(av[i]);
+			if (!new_av[j])
 			{
 				perror("ft_strdup");
 				return (NULL);
@@ -39,33 +39,33 @@ char	**copy_argv(char **argv, int size, int i, int j)
 		}
 		i++;
 	}
-	return (new_argv);
+	return (new_av);
 }
 
-//Cleans the argv array from null expansions and replaces it with a cleaned copy
-char	**clean_argv(t_cmd *cmd)
+//Cleans the av array from null expansions and replaces it with a cleaned copy
+char	**clean_av(t_cmd *cmd)
 {
 	int		i;
 	int		j;
 	int		size;
-	char	**new_argv;
+	char	**new_av;
 
 	i = 0;
 	j = 0;
 	size = 0;
-	while (cmd->argv[i])
+	while (cmd->av[i])
 	{
-		if (ft_strncmp(cmd->argv[i], EXPAND_NULL, ft_strlen(EXPAND_NULL)) != 0)
+		if (ft_strncmp(cmd->av[i], EXPAND_NULL, ft_strlen(EXPAND_NULL)) != 0)
 			size++;
 		i++;
 	}
 	i = 0;
-	new_argv = copy_argv(cmd->argv, size, i, j);
-	while (cmd->argv[i])
-		free (cmd->argv[i++]);
-	free (cmd->argv);
-	cmd->argc = size;
-	return (new_argv);
+	new_av = copy_av(cmd->av, size, i, j);
+	while (cmd->av[i])
+		free (cmd->av[i++]);
+	free (cmd->av);
+	cmd->ac = size;
+	return (new_av);
 }
 
 // Updates quote tracking state when entering or exiting quoted text
@@ -93,7 +93,7 @@ void	token_count(char *str, t_shell *shell)
 		while (is_whitespace(*str) && !in_quotes)
 			str++;
 		if (*str && !is_whitespace(*str) && *str != '|')
-			shell->argc++;
+			shell->ac++;
 		while (*str && (in_quotes || (!is_whitespace(*str) && *str != '|')))
 		{
 			if ((*str == '\'' || *str == '"')

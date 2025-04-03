@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:40 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:41 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:04:18 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 // Checks if any invalid options are passed to a builtin command.
 // Returns 1 if an invalid option is found, otherwise returns 0.
-int	has_options(char **argv, char *command)
+int	has_options(char **av, char *command)
 {
 	int	i;
 
 	i = 1;
-	while (argv[i])
+	while (av[i])
 	{
-		if ((ft_strncmp(argv[i], "-", 1) == 0 && ft_strlen(argv[i]) == 1)
-			|| (ft_strncmp(argv[i], "--", 2) == 0 && ft_strlen(argv[i]) == 2))
+		if ((ft_strncmp(av[i], "-", 1) == 0 && ft_strlen(av[i]) == 1)
+			|| (ft_strncmp(av[i], "--", 2) == 0 && ft_strlen(av[i]) == 2))
 			return (0);
-		if (argv[i][0] == '-')
+		if (av[i][0] == '-')
 		{
-			printf("minishell: %s: %s: Invalid option\n", command, argv[i]);
+			printf("minishell: %s: %s: Invalid option\n", command, av[i]);
 			return (1);
 		}
 		i++;

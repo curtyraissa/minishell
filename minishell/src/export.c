@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:42 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 09:53:40 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:59:57 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,26 +103,26 @@ static void	export_error(char *arg)
 
 /*Builtin function for 'export': handles variable exportation 
 with validation and appending*/
-int	ft_export(char **argv, t_shell *shell)
+int	ft_export(char **av, t_shell *shell)
 {
 	int	i;
 	int	flag;
 
-	if (argv[1] == NULL)
+	if (av[1] == NULL)
 		return (ft_export_no_args(shell));
-	if (has_options(argv, argv[0]))
+	if (has_options(av, av[0]))
 		return (2);
 	i = 0;
 	flag = 0;
-	while (argv[++i] != NULL)
+	while (av[++i] != NULL)
 	{
-		if (valid_name_len(shell, argv[i]) == EXPORT_NEW)
-			shell->env = update_env(shell->env, argv[i]);
-		else if (valid_name_len(shell, argv[i]) == EXPORT_APPEND)
-			append_var(shell, argv[i]);
-		else if (!valid_name_len(shell, argv[i]))
+		if (valid_name_len(shell, av[i]) == EXPORT_NEW)
+			shell->env = update_env(shell->env, av[i]);
+		else if (valid_name_len(shell, av[i]) == EXPORT_APPEND)
+			append_var(shell, av[i]);
+		else if (!valid_name_len(shell, av[i]))
 		{
-			export_error(argv[i]);
+			export_error(av[i]);
 			flag = 1;
 		}
 	}

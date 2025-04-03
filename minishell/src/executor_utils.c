@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:19 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 09:54:33 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:59:42 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,15 @@ int	is_directory(char *path)
 // Prints an appropriate error message when command path resolution fails
 void	path_errors(t_shell *shell, t_cmd *cmd)
 {
-	if (ft_strncmp(cmd->argv[0], "sudo", 4) == 0
-		&& ft_strlen(cmd->argv[0]) == ft_strlen("sudo"))
+	if (ft_strncmp(cmd->av[0], "sudo", 4) == 0
+		&& ft_strlen(cmd->av[0]) == ft_strlen("sudo"))
 	{
-		ft_putstr_fd(cmd->argv[0], 2);
+		ft_putstr_fd(cmd->av[0], 2);
 		ft_putstr_fd(": permission denied\n", 2);
 		shell->exit_status = 126;
 		return ;
 	}
-	ft_putstr_fd(cmd->argv[0], 2);
+	ft_putstr_fd(cmd->av[0], 2);
 	ft_putstr_fd(": command not found\n", 2);
 	shell->exit_status = 127;
 	return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constructors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:06 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 09:59:20 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:05:00 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ t_cmd	*create_cmd(t_shell *shell, int type, t_cmd *left, t_cmd *right)
 	ft_memset(cmd, 0, sizeof(t_cmd));
 	if (type == EXEC)
 	{
-		cmd->argv = ft_calloc(sizeof(char *), (shell->argc + 1));
-		if (!cmd->argv)
+		cmd->av = ft_calloc(sizeof(char *), (shell->ac + 1));
+		if (!cmd->av)
 			return (NULL);
 	}
-	cmd->argc = 0;
+	cmd->ac = 0;
 	cmd->heredoc = NULL;
 	cmd->heredoc_head = NULL;
 	cmd->left = left;
@@ -45,12 +45,12 @@ t_token	*create_token(void)
 	if (!token)
 		exit(0);
 	ft_memset(token, 0, sizeof(t_token));
-	token->argc = 0;
+	token->ac = 0;
 	return (token);
 }
 
 // Initializes the shell structure with default values and environment copy
-t_shell	*init_struct(char **argv, char **envp)
+t_shell	*init_struct(char **av, char **envp)
 {
 	t_shell	*shell;
 
@@ -62,9 +62,9 @@ t_shell	*init_struct(char **argv, char **envp)
 	shell->heredoc_flag = 0;
 	shell->heredoc_name = 0;
 	shell->exit_heredoc = 0;
-	shell->name = argv[0] + 2;
+	shell->name = av[0] + 2;
 	shell->exit_status = 0;
-	shell->argc = 0;
+	shell->ac = 0;
 	shell->status1 = 0;
 	shell->status2 = 0;
 	shell->prompt = NULL;

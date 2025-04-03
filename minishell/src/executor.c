@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcorlett <rcorlett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:46:22 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/04/01 09:57:22 by rcorlett         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:59:44 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static void	command_type(t_cmd *cmd, t_shell *shell, char **path)
 {
 	if (is_builtin(cmd) != NULL)
 	{
-		exec_builtin(cmd->argv, is_builtin(cmd), shell);
+		exec_builtin(cmd->av, is_builtin(cmd), shell);
 		*path = NULL;
 		return ;
 	}
-	else if (has_slash(cmd->argv[0]))
+	else if (has_slash(cmd->av[0]))
 	{
-		*path = cmd->argv[0];
+		*path = cmd->av[0];
 		if (is_directory(*path))
 		{
 			mini_error("Is a directory", -1, shell);
@@ -46,7 +46,7 @@ static void	command_type(t_cmd *cmd, t_shell *shell, char **path)
 	}
 	else
 	{
-		*path = get_cmd_path(shell->env, cmd->argv[0]);
+		*path = get_cmd_path(shell->env, cmd->av[0]);
 		if (!(*path))
 			return (path_errors(shell, cmd));
 	}

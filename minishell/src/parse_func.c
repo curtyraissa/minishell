@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:47:06 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:07 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:05:25 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_cmd	*parse_exec(char **ptr_str, t_shell *shell)
 	t_cmd		*ret;
 	t_token		*token;
 
-	shell->argc = 0;
+	shell->ac = 0;
 	token_count(*ptr_str, shell);
 	ret = create_cmd(shell, EXEC, NULL, NULL);
 	cmd = ret;
@@ -59,7 +59,7 @@ static t_cmd	*parse_exec(char **ptr_str, t_shell *shell)
 	{
 		if (!deal_token(cmd, ptr_str, token, shell))
 			break ;
-		token->argc++;
+		token->ac++;
 		ret = parse_redirs(ret, ptr_str, shell);
 	}
 	free(token);
@@ -76,7 +76,7 @@ static t_cmd	*parse_pipe(char **ptr_str, t_shell *shell)
 	s = NULL;
 	es = NULL;
 	cmd = parse_exec(ptr_str, shell);
-	cmd->argv = clean_argv(cmd);
+	cmd->av = clean_av(cmd);
 	while (find_char(ptr_str, "|"))
 	{
 		get_token(ptr_str, &s, &es);
