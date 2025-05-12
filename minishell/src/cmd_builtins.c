@@ -55,5 +55,5 @@ void	exec_builtin(char **av, char *builtin, t_shell *shell)
 	else if (ft_strncmp(builtin, "env", ft_strlen(builtin)) == 0)
 		shell->exit_status = cmd_env(av, shell);
 	else if (ft_strncmp(builtin, "exit", ft_strlen(builtin)) == 0)
-		cmd_env(av, shell);
+		cmd_exit(av, shell);
 }
