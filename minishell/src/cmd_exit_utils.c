@@ -27,7 +27,7 @@ int	exit_error(char *arg, int error)
 		ft_putstr_fd("minishell: exit: ", 2);
 		ft_putstr_fd(arg, 2);
 		ft_putstr_fd(": numeric argument required\n", 2);
-		return (255);
+		return (2);
 	}
 	return (0);
 }
